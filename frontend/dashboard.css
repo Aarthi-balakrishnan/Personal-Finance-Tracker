@@ -1,0 +1,398 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #1f2937;
+}
+
+
+/* HEADER */
+
+.header {
+    background: #1f2937;
+    color: white;
+
+    padding: 20px 5%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    font-size: 25px;
+}
+
+.header p {
+    margin-top: 5px;
+    color: #d1d5db;
+}
+
+#logoutButton {
+    background: #ef4444;
+    color: white;
+
+    border: none;
+
+    padding: 11px 20px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+
+/* DASHBOARD */
+
+.dashboard {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 30px auto;
+}
+
+
+/* MONTH */
+
+.month-section {
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    margin-bottom: 20px;
+}
+
+.month-section label {
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.month-section input {
+    padding: 10px;
+}
+
+
+/* SUMMARY */
+
+.summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+.summary-card {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0,0,0,0.08);
+}
+
+.summary-card h3 {
+    color: #6b7280;
+
+    margin-bottom: 10px;
+}
+
+.summary-card h2 {
+    font-size: 28px;
+}
+
+
+/* CARD */
+
+.card {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    margin-bottom: 25px;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0,0,0,0.08);
+}
+
+.card h2 {
+    margin-bottom: 20px;
+}
+
+
+/* FORMS */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+input,
+select {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 7px;
+
+    font-size: 15px;
+
+    margin-bottom: 15px;
+}
+
+.primary-button {
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+
+/* BUDGET */
+
+.budget-form {
+    display: flex;
+
+    gap: 10px;
+}
+
+.budget-form input {
+    flex: 1;
+}
+
+.budget-form button {
+    height: 42px;
+
+    padding: 0 20px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #2563eb;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+.budget-info {
+    margin-top: 10px;
+
+    line-height: 2;
+}
+
+#budgetWarning {
+    margin-top: 15px;
+
+    font-weight: bold;
+}
+
+
+/* CHART */
+
+.chart-card {
+    min-height: 400px;
+}
+
+#expenseChart {
+    max-height: 330px;
+}
+
+
+/* REPORT */
+
+.report-card p {
+    margin: 10px 0;
+}
+
+.report-item {
+    padding: 10px;
+
+    border-bottom:
+        1px solid #e5e7eb;
+}
+
+
+/* SAVINGS */
+
+.savings-goal {
+    margin-top: 20px;
+
+    padding: 20px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 10px;
+}
+
+.progress-container {
+    width: 100%;
+
+    height: 12px;
+
+    background: #e5e7eb;
+
+    border-radius: 10px;
+
+    margin: 10px 0;
+}
+
+.progress-bar {
+    height: 100%;
+
+    border-radius: 10px;
+
+    background: #2563eb;
+}
+
+.delete-goal {
+    margin-top: 10px;
+
+    border: none;
+
+    padding: 8px 12px;
+
+    border-radius: 5px;
+
+    background: #ef4444;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+/* TABLE */
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 700px;
+}
+
+th,
+td {
+    padding: 13px;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+    text-align: left;
+}
+
+th {
+    background: #f3f4f6;
+}
+
+.income {
+    color: #16a34a;
+
+    font-weight: bold;
+}
+
+.expense {
+    color: #dc2626;
+
+    font-weight: bold;
+}
+
+.action-btn {
+    border: none;
+
+    padding: 7px 10px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.delete-btn {
+    background: #ef4444;
+
+    color: white;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    #logoutButton {
+        width: 100%;
+    }
+
+    .dashboard {
+        width: 94%;
+
+        margin: 20px auto;
+    }
+
+    .summary {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .budget-form {
+        flex-direction: column;
+    }
+
+    .budget-form button {
+        width: 100%;
+    }
+
+    .chart-card {
+        min-height: 300px;
+    }
+
+}

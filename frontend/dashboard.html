@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Personal Finance Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="dashboard.css"
+    >
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div>
+        <h1>Personal Finance Tracker</h1>
+        <p id="welcomeUser">Welcome</p>
+    </div>
+
+    <button id="logoutButton">
+        Logout
+    </button>
+
+</header>
+
+
+<main class="dashboard">
+
+
+    <!-- MONTH SELECTOR -->
+
+    <section class="month-section">
+
+        <label>
+            Select Month
+        </label>
+
+        <input
+            type="month"
+            id="monthFilter"
+        >
+
+    </section>
+
+
+    <!-- MONTHLY SUMMARY -->
+
+    <section class="summary">
+
+        <div class="summary-card income-card">
+
+            <h3>Monthly Income</h3>
+
+            <h2 id="monthlyIncome">
+                ₹0
+            </h2>
+
+        </div>
+
+
+        <div class="summary-card expense-card">
+
+            <h3>Monthly Expenses</h3>
+
+            <h2 id="monthlyExpense">
+                ₹0
+            </h2>
+
+        </div>
+
+
+        <div class="summary-card balance-card">
+
+            <h3>Monthly Savings</h3>
+
+            <h2 id="monthlySavings">
+                ₹0
+            </h2>
+
+        </div>
+
+    </section>
+
+
+    <!-- BUDGET -->
+
+    <section class="card">
+
+        <h2>Monthly Budget</h2>
+
+        <div class="budget-form">
+
+            <input
+                type="number"
+                id="budgetAmount"
+                placeholder="Enter monthly budget"
+            >
+
+            <button id="saveBudget">
+                Save Budget
+            </button>
+
+        </div>
+
+        <div class="budget-info">
+
+            <p>
+                Budget:
+                <strong id="budgetValue">
+                    ₹0
+                </strong>
+            </p>
+
+            <p>
+                Spent:
+                <strong id="budgetSpent">
+                    ₹0
+                </strong>
+            </p>
+
+            <p>
+                Remaining:
+                <strong id="budgetRemaining">
+                    ₹0
+                </strong>
+            </p>
+
+        </div>
+
+        <div id="budgetWarning"></div>
+
+    </section>
+
+
+    <!-- ADD TRANSACTION -->
+
+    <section class="card">
+
+        <h2>Add Transaction</h2>
+
+        <form id="expenseForm">
+
+            <div class="form-grid">
+
+                <select id="type" required>
+
+                    <option value="">
+                        Transaction Type
+                    </option>
+
+                    <option value="income">
+                        Income
+                    </option>
+
+                    <option value="expense">
+                        Expense
+                    </option>
+
+                </select>
+
+
+                <input
+                    type="number"
+                    id="amount"
+                    placeholder="Amount"
+                    min="1"
+                    required
+                >
+
+
+                <select id="category" required>
+
+                    <option value="">
+                        Category
+                    </option>
+
+                    <option value="Salary">
+                        Salary
+                    </option>
+
+                    <option value="Food">
+                        Food
+                    </option>
+
+                    <option value="Shopping">
+                        Shopping
+                    </option>
+
+                    <option value="Transport">
+                        Transport
+                    </option>
+
+                    <option value="Education">
+                        Education
+                    </option>
+
+                    <option value="Bills">
+                        Bills
+                    </option>
+
+                    <option value="Entertainment">
+                        Entertainment
+                    </option>
+
+                    <option value="Health">
+                        Health
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+
+                <input
+                    type="date"
+                    id="date"
+                    required
+                >
+
+            </div>
+
+
+            <input
+                type="text"
+                id="description"
+                placeholder="Description"
+            >
+
+
+            <button
+                type="submit"
+                class="primary-button"
+            >
+                Add Transaction
+            </button>
+
+        </form>
+
+        <p id="message"></p>
+
+    </section>
+
+
+    <!-- CHART -->
+
+    <section class="card chart-card">
+
+        <h2>
+            Monthly Expense Chart
+        </h2>
+
+        <canvas id="expenseChart"></canvas>
+
+    </section>
+
+
+    <!-- MONTHLY REPORT -->
+
+    <section class="card report-card">
+
+        <h2>
+            Monthly Financial Report
+        </h2>
+
+        <div id="monthlyReport"></div>
+
+        <button
+            id="printReport"
+            class="primary-button"
+        >
+            Print / Save Report
+        </button>
+
+    </section>
+
+
+    <!-- SAVINGS GOALS -->
+
+    <section class="card">
+
+        <h2>
+            Savings Goals
+        </h2>
+
+
+        <form id="savingsForm">
+
+            <div class="form-grid">
+
+                <input
+                    type="text"
+                    id="productName"
+                    placeholder="Product name"
+                    required
+                >
+
+
+                <input
+                    type="number"
+                    id="targetAmount"
+                    placeholder="Target amount"
+                    required
+                >
+
+
+                <input
+                    type="number"
+                    id="savedAmount"
+                    placeholder="Already saved"
+                    value="0"
+                >
+
+
+                <input
+                    type="date"
+                    id="targetDate"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="primary-button"
+            >
+                Add Savings Goal
+            </button>
+
+        </form>
+
+
+        <div id="savingsGoals"></div>
+
+    </section>
+
+
+    <!-- TRANSACTIONS -->
+
+    <section class="card">
+
+        <h2>
+            Transactions
+        </h2>
+
+
+        <input
+            type="text"
+            id="search"
+            placeholder="Search transactions..."
+        >
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Date</th>
+
+                        <th>Type</th>
+
+                        <th>Category</th>
+
+                        <th>Description</th>
+
+                        <th>Amount</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="transactionList">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="dashboard.js"></script>
+
+</body>
+
+</html>
